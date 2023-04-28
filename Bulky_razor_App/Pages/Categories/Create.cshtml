@@ -1,0 +1,38 @@
+﻿@page
+@model Bulky_razor_App.Pages.Categories.CreateModel
+@{
+}
+
+<section class="container">
+    <div>
+        <h2>
+            Create Category
+        </h2>
+    </div>
+    <form method="post">
+        <span asp-validation-summary="All"></span>
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="Category.Name"></label>
+            <input type="text" class="form-control is-valid" asp-for="Category.Name">
+            <span class="valid-feedback" asp-validation-for="Category.Name"></span>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="Category.CategoryOrder"></label>
+            <input type="number" class="form-control is-valid" asp-for="Category.CategoryOrder">
+            <span class="valid-feedback" asp-validation-for="Category.CategoryOrder"></span>
+        </div>
+        <div class="row mt-1">
+            <div class="col-12 col-md-6 ">
+                <button type="submit" class="btn btn-dark col-5 ">Add</button>
+                <button asp-page="Categories/Index" class="btn btn-secondary border col-5 ">Go To List</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

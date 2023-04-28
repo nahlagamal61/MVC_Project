@@ -1,0 +1,30 @@
+﻿@model Category
+
+<section class="container">
+    <div>
+        <h2>
+            Delete Category
+        </h2>
+    </div>
+    <form method="post">
+        <div class="form-group ">
+            <input type="text" class="form-control is-valid" asp-for="Id" hidden>
+        </div>
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="Name"></label>
+            <input type="text" class="form-control is-valid" asp-for="Name" disabled>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="CategoryOrder"></label>
+            <input type="number" class="form-control is-valid" asp-for="CategoryOrder" disabled>
+        </div>
+        <div class="row mt-1">
+            <div class="col-12 col-md-6 ">
+                <button type="submit" class="btn btn-dark col-5 ">Delete</button>
+                <button asp-controller="Category" asp-action="Index" class="btn btn-secondary border col-5 ">Go To List</button>
+            </div>
+        </div>
+    </form>
+</section>
+

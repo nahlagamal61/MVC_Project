@@ -1,0 +1,50 @@
+﻿@model List<Category>
+
+
+<div class="container text-center">
+<partial name="_Notification" />
+    <div class="row mb-2">
+        <div class="col-6">
+            <h1> category   List</h1>
+        </div>
+        <div class="col-6 text-end ">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-patch-plus mr-1"></i>
+                Add Category
+            </a>
+        </div>
+    </div>
+    <div class="row" >
+        <table class="table table-bordered table-striped ">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th> Name </th>
+                    <th> Diaplay Order </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var cat in Model.OrderBy(c => c.CategoryOrder))
+                {
+                    <tr>
+                        <td>@cat.Name</td>
+                        <td>@cat.CategoryOrder</td>
+                        <td>
+                            <a asp-controller="Category" asp-action="Edit" asp-route-id="@cat.Id" class="btn btn-dark">
+                                <i class="bi bi-pencil-square"></i>
+                                Edit
+                            </a>
+                            <a asp-controller="Category" asp-action="Delete" asp-route-id="@cat.Id" class="btn btn-danger ">
+                                <i class="bi bi-trash"></i>
+                                Delet
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-12 text-end ">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Go Home</a>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@model Product
+
+<section class="container">
+    <div>
+        <h2>
+            Create Product
+        </h2>
+    </div>
+    <form method="post">
+        @*        <span asp-validation-summary="All"></span>
+        *@
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="Title"></label>
+            <input type="text" class="form-control is-valid" asp-for="Title" disabled>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="Description"></label>
+            <input type="text" class="form-control is-valid" asp-for="Description" disabled>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="Author"></label>
+            <input type="text" class="form-control is-valid" asp-for="Author" disabled>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="ISBN"></label>
+            <input type="text" class="form-control is-valid" asp-for="ISBN" disabled>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="ListPrice"></label>
+            <input type="number" class="form-control is-valid" asp-for="ListPrice" disabled>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="Price"></label>
+            <input type="number" class="form-control is-valid" asp-for="Price" disabled>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="Price50"></label>
+            <input type="number" class="form-control is-valid" asp-for="Price50" disabled>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="form-label mt-4" asp-for="Price100"></label>
+            <input type="text" class="form-control is-valid" asp-for="Price100" disabled>
+        </div>
+
+
+        <div class="row mt-1">
+            <div class="col-12 col-md-6 ">
+                <button type="submit" class="btn btn-dark col-5 ">Delete</button>
+                <button asp-controller="Product" asp-action="Index" class="btn btn-secondary border col-5 ">Go To List</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

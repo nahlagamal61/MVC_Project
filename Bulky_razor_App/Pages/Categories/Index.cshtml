@@ -1,0 +1,51 @@
+﻿@page
+@model Bulky_razor_App.Pages.Categories.IndexModel
+@{
+}
+
+<div class="container text-center">
+    <div class="row mb-2">
+        <div class="col-6">
+            <h1> category   List</h1>
+        </div>
+        <div class="col-6 text-end ">
+            <a asp-page="/Categories/Create" class="btn btn-primary">
+                <i class="bi bi-patch-plus mr-1"></i>
+                Add Category
+            </a>
+        </div>
+    </div>
+    <div class="row" >
+        <table class="table table-bordered table-striped ">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th> Name </th>
+                    <th> Diaplay Order </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var cat in Model.Categories.OrderBy(c => c.CategoryOrder))
+                {
+                    <tr>
+                        <td>@cat.Name</td>
+                        <td>@cat.CategoryOrder</td>
+                        <td>
+                            <a asp-page="/Categories/Edit" asp-route-id="@cat.Id" class="btn btn-dark">
+                                <i class="bi bi-pencil-square"></i>
+                                Edit
+                            </a>
+                            <a asp-page="/Categories/Delete" asp-route-id="@cat.Id" class="btn btn-danger ">
+                                <i class="bi bi-trash"></i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-12 text-end ">
+        <a asp-page ="Home/Index" class="btn btn-primary">Go Home</a>
+    </div>
+</div>

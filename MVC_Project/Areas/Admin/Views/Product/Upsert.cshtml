@@ -1,0 +1,108 @@
+﻿@model ProductVM
+
+<section class="container">
+    <div class="card shadow border-0 my-4">
+        <div class="card-header bg-dark  ml-0 py-3">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="text-white py-2"> @(Model.Product.Id != 0 ? "Update" : "Create") Product</h2>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-4">
+            <form method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-10">
+                <div>
+                    <input asp-for="Product.Id" hidden />
+                    <input asp-for="Product.ImageURL" hidden />
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Product.Title" class="form-control border-0 shadow" />
+                    <label asp-for="Product.Title" class="ms-2"></label>
+                    <span asp-validation-for="Product.Title" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <textarea type="text" class="form-control is-valid border-0 shadow" asp-for="Product.Description"></textarea>
+                    <label class="form-label mt-4" asp-for="Product.Description"></label>
+                    <span class="valid-feedback" asp-validation-for="Product.Description"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input type="text" class="form-control is-valid border-0 shadow" asp-for="Product.Author">
+                    <label class="mt-2" asp-for="Product.Author"></label>
+                    <span class="valid-feedback " asp-validation-for="Product.Author"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input type="text" class="form-control is-valid border-0 shadow" asp-for="Product.ISBN">
+                    <label class="ms-2" asp-for="Product.ISBN"></label>
+                    <span class="valid-feedback" asp-validation-for="Product.ISBN"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input type="number" class="form-control is-valid border-0 shadow" asp-for="Product.ListPrice">
+                    <label class="ms-2" asp-for="Product.ListPrice"></label>
+                    <span class="valid-feedback" asp-validation-for="Product.ListPrice"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input type="number" class="form-control is-valid border-0 shadow" asp-for="Product.Price">
+                    <label class="ms-2" asp-for="Product.Price"></label>
+                    <span class="valid-feedback" asp-validation-for="Product.Price"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input type="number" class="form-control is-valid border-0 shadow" asp-for="Product.Price50">
+                    <label class="ms-2" asp-for="Product.Price50"></label>
+                    <span class="valid-feedback" asp-validation-for="Product.Price50"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input type="number" class="form-control is-valid border-0 shadow " asp-for="Product.Price100">
+                    <label class="ms-2" asp-for="Product.ListPrice"></label>
+                    <span class="valid-feedback" asp-validation-for="Product.Price100"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <select class="form-select" id="exampleSelect1" fdprocessedid="r6zshc" asp-items="@Model.Categories" asp-for="Product.CategoryId">
+                        <option selected disabled> --select category--</option>
+                    </select>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input type="file" name="file" class="form-control border-0 shadow" />
+                </div>
+                <div class="row mt-1">
+                    <div class="col-12 col-md-6 ">
+                        @if(@Model.Product.Id != 0)
+                        {
+                            <button type="submit" class="btn btn-dark col-5 ">Update</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-dark col-5 ">Add</button>
+                        }
+                        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary border col-5 ">Go To List</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <img src="@Model.Product.ImageURL" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+            </div>
+        </div>
+     </form>
+         </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo |  fontfamily fontsize | bold italic underline strikethrough |  mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ]
+        });
+    </script>
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
